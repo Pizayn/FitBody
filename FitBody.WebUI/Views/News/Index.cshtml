@@ -1,0 +1,61 @@
+﻿@using System.Text
+@model FitBody.WebUI.Model.BlogViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/_Layout.cshtml";
+
+}
+
+
+
+
+<div class="site-section">
+    <div class="container">
+        <div class="row mb-5">
+            @foreach (var news in Model.BlogPosts)
+            {
+                <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
+                    <div class="media-with-text mb-5">
+                        <div class="mb-4">
+                            <a asp-controller="News" asp-action="Details" asp-route-id="@news.ID">
+                                <img src=@news.Image style="width: 350px; height: 262px;" alt="" class="img-fluid">
+                            </a>
+                        </div>
+                        <h2 class="h5 mb-2"><a href="#">@news.Title</a></h2>
+                        <span class="mb-3 d-block post-date">@news.Time.ToString("MM/dd/yyyy") &bullet; By <a asp-controller="News" asp-action="Details" asp-route-id="@news.ID">@User.Identity.Name</a></span>
+                        @if (@news.Summary.Length < 80)
+                        {
+                            <p>@news.Summary</p>
+                        }
+                        else
+                        {
+                            <p>@(news.Summary.Substring(0, 80) + "...")</p>
+                        }
+                       
+                    </div>
+                </div>
+            }
+          
+
+
+
+
+
+
+
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="site-block-27">
+                    <ul>
+                       <news-list-pager page-size="@Model.PageSize" page-count="@Model.PageCount" current-page="@Model.CurrentPage"></news-list-pager>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

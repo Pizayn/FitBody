@@ -1,0 +1,31 @@
+﻿@using Microsoft.AspNetCore.Http
+
+@if (User.Identity.IsAuthenticated)
+{
+    if (User.IsInRole("Admin"))
+    {
+        <li class="has-children">
+            @User.Identity.Name
+            <ul class="dropdown arrow-top">
+                <li><a asp-controller="Admin" asp-action="">Page Settings</a></li>
+                <li><a asp-controller="Admin" asp-action="">Exercise Settings</a></li>
+                <li><a asp-controller="Admin" asp-action="Supplement">Supplement Settings</a></li>
+                <li><a asp-controller="Account" asp-action="LogOff">Sign Out</a></li>
+
+            </ul>
+        </li>
+    }
+    if (User.IsInRole("User"))
+    {
+        <li class="has-children">
+            @User.Identity.Name
+            <ul class="dropdown arrow-top">
+                <li><a asp-controller="Order" asp-action="Details">My Orders</a></li>
+                <li><a asp-controller="Admin" asp-action="">My Programs</a></li>
+                <li><a asp-controller="Account" asp-action="LogOff">Sign Out</a></li>
+
+            </ul>
+        </li>
+    }
+
+}

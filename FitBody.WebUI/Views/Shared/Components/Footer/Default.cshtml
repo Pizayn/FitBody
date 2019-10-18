@@ -1,0 +1,33 @@
+﻿@model FitBody.WebUI.Model.FooterViewComponentModel
+
+<div class="row">
+    <div class="col-md-6">
+        <h3 class="footer-heading mb-4 text-white">Quick Menu</h3>
+        <ul class="list-unstyled">
+            <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+            <li><a asp-controller="Supplement" asp-action="Index">Supplement</a></li>
+            <li><a asp-controller="Trainer" asp-action="Index">Our Trainers</a></li>
+            <li><a asp-controller="News" asp-action="Index">News</a></li>
+            <li><a asp-controller="About" asp-action="Index">About</a></li>
+            
+        </ul>
+    </div>
+    <div class="col-md-6">
+        <h3 class="footer-heading mb-4 text-white">Program</h3>
+        <ul class="list-unstyled">
+            @foreach (var exerciseType in Model.ExerciseTypes)
+            {
+                @foreach (var exercise in Model.Exercises)
+                 {
+                     if (exerciseType.ID==exercise.ExerciseTypeID)
+                     {
+                         <li><a asp-controller="Exercise" asp-action="Details" asp-route-exerciseId="@exercise.ID" >@exerciseType.ExerciseTypeName</a></li>
+
+                     }
+                 }
+            }
+           
+           
+        </ul>
+    </div>
+</div>

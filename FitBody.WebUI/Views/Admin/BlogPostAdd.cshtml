@@ -1,0 +1,112 @@
+﻿@model FitBody.WebUI.Model.BlogViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Text Editors
+        <small>Advanced form element</small>
+    </h1>
+
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-info">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        CK Editor
+                        <small>Advanced and full of features</small>
+                    </h3>
+                    <!-- tools box -->
+                    <div class="pull-right box-tools">
+                        <button type="button" class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip"
+                                title="Collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip"
+                                title="Remove">
+                            <i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                    <!-- /. tools -->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body pad">
+                    <form asp-action="BlogPostAdd" asp-controller="Admin">
+                        <div class="form-group">
+                            <textarea id="editor1" asp-for="BlogPost.Description" rows="10" cols="80">
+                                            This is my textarea to be replaced with CKEditor.
+                    </textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="BlogPost.Image">Image Url</label>
+                            <input asp-for="BlogPost.Image" class="form-control" placeholder="Image Url" />
+                            <span asp-validation-for="BlogPost.Image"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="BlogPost.Title">Title</label>
+                            <input asp-for="BlogPost.Title" class="form-control" placeholder="Title" />
+                            <span asp-validation-for="BlogPost.Title"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="BlogPost.Summary">Summary</label>
+                            <input asp-for="BlogPost.Summary" class="form-control" placeholder="Summary" />
+                            <span asp-validation-for="BlogPost.Summary"></span>
+                        </div>
+                        <input type="hidden" asp-for="BlogPost.Time" />
+                        <input type="hidden" asp-for="BlogPost.AccountId" />
+                        <input type="submit" class="btn btn-success" value="add" />
+                    </form>
+                </div>
+            </div>
+            <!-- /.box -->
+
+
+        </div>
+        <!-- /.col-->
+    </div>
+    <!-- ./row -->
+</section>
+
+
+
+
+<!-- /.content -->
+<!-- Left side column. contains the logo and sidebar -->
+<!-- Content Wrapper. Contains page content -->
+<!-- /.content-wrapper -->
+<!-- Control Sidebar -->
+<!-- /.control-sidebar -->
+<!-- Add the sidebar's background. This div must be placed
+     immediately after the control sidebar -->
+<!-- ./wrapper -->
+<!-- jQuery 3 -->
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<!-- FastClick -->
+<script src="/bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<!-- AdminLTE for demo purposes -->
+<!-- CK Editor -->
+<script src="/bower_components/ckeditor/ckeditor.js"></script>
+<!-- Bootstrap WYSIHTML5 -->
+<script>
+  $(function () {
+    // Replace the <textarea id="editor1"> with a CKEditor
+    // instance, using default configuration.
+    CKEDITOR.replace('editor1')
+    //bootstrap WYSIHTML5 - text editor
+    $('.textarea').wysihtml5()
+  })
+</script>
+
+

@@ -1,0 +1,15 @@
+﻿@model FitBody.WebUI.Model.ExerciseViewModel
+
+
+@foreach (var exerciseType in Model.ExerciseTypes)
+{
+ 
+    foreach (var exercise in Model.Exercises)
+     {
+         if (exerciseType.ID==exercise.ExerciseTypeID)
+         {
+             <li><a asp-controller="Exercise" asp-action="Details" asp-route-exerciseId="@exercise.ID">@exerciseType.ExerciseTypeName</a></li>
+
+         }
+     }
+}

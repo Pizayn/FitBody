@@ -1,0 +1,158 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Super Market Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+               function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //for-mobile-apps -->
+    <link href="/ds/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/ds/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- font-awesome icons -->
+    <link href="/dscss/font-awesome.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <!-- js -->
+    <script src="/ds/js/jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    <link href='//fonts.googleapis.com/css?family=Raleway:400,100,100italic,200,200italic,300,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="/dsjs/move-top.js"></script>
+    <script type="text/javascript" src="/dsjs/easing.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+            });
+        });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="/node_modules/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="/node_modules/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+
+
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Work+Sans:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="/ds/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/ds/css/magnific-popup.css">
+    <link rel="stylesheet" href="/ds/css/jquery-ui.css">
+    <link rel="stylesheet" href="/ds/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/ds/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/ds/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/ds/css/animate.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelementplayer.min.css">
+
+    @* Syncfusion Essential JS 2 Styles *@
+    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/material.css" />
+
+    @* Syncfusion Essential JS 2 Scripts *@
+    <script src="https://cdn.syncfusion.com/ej2/dist/ej2.min.js"></script>
+
+    <link rel="stylesheet" href="/ds/fonts/flaticon/font/flaticon.css">
+
+    <link rel="stylesheet" href="/ds/css/aos.css">
+
+    <link rel="stylesheet" href="/ds/css/style.css">
+
+
+</head>
+
+<body>
+    <!-- header -->
+   
+   
+    <!-- //header -->
+    <!-- navigation -->
+@await Component.InvokeAsync("NavBarViewComponentModel")
+
+
+<!-- //navigation -->
+    <!-- main-slider -->
+
+
+    <div class="mt-3">
+        @if (TempData["message"] != null)
+        {
+            <div class="alert alert-primary" role="alert">
+                @TempData["message"]
+            </div>
+        }
+        @RenderSection("ControlsSection", required: false)
+        @RenderSection("SampleHeading", required: false)
+        @RenderSection("MetaTags", required: false)
+        @RenderSection("ScriptSection", required: false)
+        @RenderBody()
+
+    </div>
+
+
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- top-header and slider -->
+    <!-- here stars scrolling icon -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            /*
+                var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+                };
+            */
+
+            $().UItoTop({ easingType: 'easeOutQuart' });
+
+        });
+    </script>
+    <!-- //here ends scrolling icon -->
+    <script src="/js/minicart.min.js"></script>
+    <script>
+    // Mini Cart
+    paypal.minicart.render({
+        action: '#'
+    });
+
+    if (~window.location.search.indexOf('reset=true')) {
+        paypal.minicart.reset();
+    }
+    </script>
+    <script type=""></script>
+    <script type="text/javascript">
+    $('#btn').click(function() {
+        $.ajax({
+            type: 'GET',
+            url: 'Home/Index',
+            success: function() {
+                alert("success");
+        });
+    })
+    </script>
+    <!-- main slider-banner -->
+    <script src="/js/skdslider.min.js"></script>
+    <link href="/css/skdslider.css" rel="stylesheet">
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            jQuery('#demo1').skdslider({ 'delay': 5000, 'animationSpeed': 2000, 'showNextPrev': true, 'showPlayButton': true, 'autoSlide': true, 'animationType': 'fading' });
+
+            jQuery('#responsive').change(function () {
+                $('#responsive_wrapper').width(jQuery(this).val());
+            });
+
+        });
+    </script>
+    <!-- //main slider-banner -->
+</body>
+</html>

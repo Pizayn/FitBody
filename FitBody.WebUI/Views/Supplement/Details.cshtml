@@ -1,0 +1,97 @@
+﻿@model FitBody.WebUI.Model.SupplementDetailsListViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_SupplementLayout.cshtml";
+}
+
+
+@{
+    var base64 = Convert.ToBase64String(Model.SupplementDetailsViewModel.Image);
+    var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+}
+
+
+
+
+<div class="breadcrumbs">
+    <div class="container">
+        <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+            <li><a asp-controller="Home" asp-action="Index"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+            <li><a asp-controller="Supplement" asp-action="Index" asp-route-category="@Model.SupplementDetailsViewModel.CategoryId"><span aria-hidden="true"></span>@Model.SupplementDetailsViewModel.SupplementCategoryName</a></li>
+            <li><a asp-controller="Supplement" asp-action="Index" asp-route-category="@Model.SupplementDetailsViewModel.CategoryId" asp-route-subCategory="@Model.SupplementDetailsViewModel.SubCategoryId"><span aria-hidden="true"></span>@Model.SupplementDetailsViewModel.SupplementSubCategoryName</a></li>
+            <li class="active">@Model.SupplementDetailsViewModel.SupplementName</li>
+
+        </ol>
+    </div>
+</div>
+<!-- //breadcrumbs -->
+<div class="products">
+    <div class="container">
+        <div class="agileinfo_single">
+
+            <div class="col-md-4 agileinfo_single_left">
+                <img id="example" src="@imgsrc" alt=" " class="img-responsive">
+            </div>
+            <div class="col-md-8 agileinfo_single_right">
+                <h2>@Model.SupplementDetailsViewModel.SupplementName - @Model.SupplementDetailsViewModel.SupplementCategoryName.</h2>
+                <div class="rating1">
+                    <span class="starRating">
+                        <input id="rating5" type="radio" name="rating" value="5">
+                        <label for="rating5">5</label>
+                        <input id="rating4" type="radio" name="rating" value="4">
+                        <label for="rating4">4</label>
+                        <input id="rating3" type="radio" name="rating" value="3" checked="">
+                        <label for="rating3">3</label>
+                        <input id="rating2" type="radio" name="rating" value="2">
+                        <label for="rating2">2</label>
+                        <input id="rating1" type="radio" name="rating" value="1">
+                        <label for="rating1">1</label>
+                    </span>
+                </div>
+                <div class="w3agile_description">
+                    <h4>Description :</h4>
+                    <p>
+                        @Model.SupplementDetailsViewModel.Description
+                    </p>
+                </div>
+                <div class="single-infoagile">
+                    <h4>Index :</h4>
+                    <ul>
+                        <li>
+                            Lorem ipsum dolor sit amet, consectetaur adipisicing elit,
+                        </li>
+                        <li>
+                            Lorem ipsum dolor sit amet, consectetaur adipisicing elit,
+                        </li>
+                        <li>
+                            Lorem ipsum dolor sit amet, consectetaur adipisicing elit,
+                        </li>
+                        
+                    </ul>
+                </div>
+                <div class="snipcart-item block">
+                    <div class="snipcart-thumb agileinfo_single_right_snipcart">
+                        <h2 class="m-sing">$@Model.SupplementDetailsViewModel.UnitPrice <span></span></h2>
+                    </div>  
+                    <div class="snipcart-details agileinfo_single_right_details">
+                        <form asp-controller="Cart" asp-action="AddToCart" asp-route-supplementId="@Model.SupplementDetailsViewModel.Id" method="post">
+                            <fieldset>
+
+                                <input type="submit" name="submit" value="Add to cart" class="button">
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+<!-- new -->
+<div class="newproducts-w3agile">
+
+</div>
+<!-- //new -->
+}
+<script src="/js/bootstrap.min.js"></script>

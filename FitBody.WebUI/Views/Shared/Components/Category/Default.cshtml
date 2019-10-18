@@ -1,0 +1,79 @@
+﻿@model FitBody.WebUI.Model.CategoryViewComponentModel
+
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
+<div class="panel-group" id="accordion">
+
+    @foreach (var category in Model.SupplementCategories)
+    {
+
+        var cssAll = "list-group-item";
+        var backgroundColorAll = "";
+        <div class="panel panel-default">
+
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#@category.ID">
+                        <span class="fas fa-wine-glass-alt">
+                        </span> @category.CategoryName
+                    </a>
+                </h4>
+            </div>
+            <div id="@category.ID" class="panel-collapse collapse in">
+                <ul class="list-group">
+                    @if (category.ID == Model.CurrentCategory && Model.CurrentSubCategory == 0)
+                    {
+                        cssAll += " active";
+                        backgroundColorAll = "background-color: black";
+
+                    }
+                   
+                        <li class="@cssAll" style="@backgroundColorAll">
+                            <a asp-controller="Supplement" asp-action="Index" asp-route-category="@category.ID">All @category.CategoryName</a>
+
+                        </li>
+
+                    
+                    
+                    
+                    
+
+                    @foreach (var subCategory in Model.SupplementSubCategories)
+                    {
+
+                        if (category.ID == subCategory.SupplementCategoryID)
+                        {
+                            var css = "list-group-item";
+                            var backgroundColor = "";
+
+                            if (subCategory.ID == Model.CurrentSubCategory)
+                            {
+                                css += " active";
+                                backgroundColor = "background-color: black";
+
+                            }
+                           
+                                <li class="@css" style="@backgroundColor">
+                                    <a asp-controller="Supplement" asp-action="Index" asp-route-category="@subCategory.SupplementCategoryID" asp-route-subCategory="@subCategory.ID">@subCategory.SuplementSubCategoryName</a>
+
+                                </li>
+                            
+                            
+                                
+                            
+
+                        }
+
+                    }
+
+                </ul>
+            </div>
+        </div>
+    }
+
+
+
+</div>

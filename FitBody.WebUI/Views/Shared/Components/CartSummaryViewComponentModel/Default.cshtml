@@ -1,0 +1,40 @@
+﻿@model FitBody.WebUI.Model.CartSummaryModel
+
+
+    <li class="has-children">
+        <i class="fas fa-cart-plus" style="font-size: 25px;"></i>
+        <ul class="dropdown arrow-top">
+            @foreach (var item in Model.Cart.CartLines)
+            {
+                <div class="row" style="margin-left: 20px;">
+                    <li><a>@item.Supplement.SupplementName <span class="badge" id="countCart">@item.Quantity</span></a></li>
+                    <a type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top"
+                       title="Remove item" asp-controller="Cart" asp-action="RemoveToCart" asp-route-supplementId="@item.Supplement.ID">
+                        <i class="fas fa-times" style="font-size: 8px;"></i>
+                    </a>
+                </div>
+               
+                
+
+            }
+            <li>
+                <a>
+                    Total
+                    € @Model.Cart.Total
+
+                </a>
+            </li>
+            <li>
+                @if (Model.Cart.Total>0)
+                {
+                    <a asp-controller="Cart" asp-action="ListCart" disabled="">
+                        Go To List
+                        <i class="fa fa-shopping-cart" style="font-size: 18px; color: green;"></i>
+                    </a>
+                }
+            
+               
+            </li>
+
+        </ul>
+    </li>

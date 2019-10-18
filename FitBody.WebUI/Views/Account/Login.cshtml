@@ -1,0 +1,102 @@
+﻿@model FitBody.WebUI.Model.LoginViewModel
+
+@{
+
+}
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Get Shit Done Bootstrap Wizard by Creative Tim</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    <!--     Fonts and icons     -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet">
+    <!-- CSS Files -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/assets/css/gsdk-bootstrap-wizard.css" rel="stylesheet" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="/assets/css/demo.css" rel="stylesheet" />
+</head>
+<body>
+
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+
+    <div class="image-container set-full-height" style="background-image: url('/assets/img/wizard.jpg'); width: 2023px; height: 809px;">
+        <a asp-controller="Home" asp-action="Index">
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="/images/hero_b1_1.jpg" width="60px;" height="60px;">
+                </div>
+                <div class="brand">
+                    Home Page
+                </div>
+            </div>
+        </a>
+        <div class="container">
+            <div id="loginbox" style="margin-top: 150px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title">Sign In</div>
+                        <div style="float: right; font-size: 80%; position: relative; top: -10px"><a href="#">Forgot password?</a></div>
+                    </div>
+                    <div style="padding-top: 30px" class="panel-body">
+                        <div style="display: none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+
+                        <form id="loginform" class="form-horizontal" role="form" asp-controller="Account" asp-action="Login" method="post">
+
+                            <div style="margin-bottom: 25px" class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="username" asp-for="UserName">
+                            </div>
+
+                            <div style="margin-bottom: 25px" class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                <input id="login-password" type="password" class="form-control" name="password" placeholder="password" asp-for="Password">
+                            </div>
+
+
+                            <div class="input-group">
+                                <div class="checkbox">
+
+                                    <input id="login-remember" type="checkbox" name="remember" value="1" asp-for="RememberMe"> Remember me
+                                </div>
+
+                            </div>
+                            <div style="margin-top: 10px" class="form-group">
+                                <!-- Button -->
+                                <div class="col-sm-12 controls">
+                                    <input id="btn-login" type="submit" class="btn btn-success" value="Login" />
+                                </div>
+                            </div>
+
+
+
+
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+</body>
+
+
+
+
+</html>

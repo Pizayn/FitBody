@@ -1,0 +1,152 @@
+﻿@model FitBody.WebUI.Model.OrderDetailsListModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_SupplementLayout.cshtml";
+}
+
+
+@await Component.InvokeAsync("SideBar")
+<div class="breadcrumbs">
+    <div class="container">
+        <ol class="breadcrumb breadcrumb1">
+            <li><a asp-controller="Home" asp-action="Index"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+            <li class="active">Checkout Page</li>
+        </ol>
+    </div>
+</div>
+<div class="container" style="margin-left: 250px;">
+    
+    @if (Model.OrderDetailsModels.Count == 0)
+    {
+        <div class="container">
+            <div class="row">
+                <h2> My Orders</h2>
+                <hr />
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Order Id</th>
+                        <th>Total Price</th>
+                        <th></th>
+
+                    </tr>
+
+                    </thead>
+                    <tbody>
+                    @foreach (var item in Model.Orders)
+                    {
+                        <tr>
+                            <td>
+                                @item.ID
+                            </td>
+                            <td>@item.Total <i class="fas fa-euro-sign" style="font-size: 18px;"></i></td>
+                            <td>
+                                <a class="btn btn-success" asp-controller="Order" asp-action="Details" asp-route-orderId="@item.ID">Details</a>
+                            </td>
+
+                        </tr>
+                    }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+</div>
+<div class="container" style="margin-left: 250px;">
+   
+
+
+
+    @if (Model.OrderDetailsModels.Count != 0)
+    {
+
+
+
+        <!-- //breadcrumbs -->
+        <!-- checkout -->
+        <div class="checkout">
+            <div class="container">
+
+                <div class="checkout-right">
+                    <table class="timetable_sub">
+                        <thead>
+                            <tr>
+
+                                <th>Image</th>
+                                <th>Quantity</th>
+                                <th>Product Name</th>
+                                <th>Total</th>
+
+                            </tr>
+                        </thead>
+                        @foreach (var supplement in Model.OrderDetailsModels)
+                        {
+                            var base64 = Convert.ToBase64String(supplement.Image);
+                            var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+                            <tr class="rem1">
+
+                                <td class="invert-image" style="width: 30px;"><a asp-controller="Supplement" asp-action="Index" asp-route-supplementId="@supplement.SupplementId"><img width="40px;" height="40px;" src="@imgsrc" class="img-responsive" /></a></td>
+                                <td class="invert">
+                                    <div class="quantity">
+
+
+                                        <div class="entry value"><span>@supplement.Quantity</span></div>
+
+
+                                    </div>
+                                </td>
+                                <td class="invert">@supplement.SupplementName</td>
+
+                                <td class="invert">@(supplement.Price * supplement.Quantity )   <i class="fas fa-euro-sign" style="font-size: 18px;"></i></td>
+
+                            </tr>
+                        }
+
+
+                        <!--quantity-->
+                        <script>
+                            $('.value-plus').on('click', function () {
+                                var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10) + 1;
+                                divUpd.text(newVal);
+                            });
+
+                            $('.value-minus').on('click', function () {
+                                var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10) - 1;
+                                if (newVal >= 1) divUpd.text(newVal);
+                            });
+                        </script>
+                        <!--quantity-->
+                    </table>
+                </div>
+                <div class="checkout-left">
+                    <div class="checkout-left-basket">
+                        <h4>Delivery Adress</h4>
+                        <ul>
+                            @foreach (var order in Model.OrderDetailsModels.Take(1))
+                            {
+                                <li>Time <i>-</i> <span>@order.Time.ToString("MM/dd/yyyy") </span></li>
+                                <li>Neighborhood <i>-</i> <span>@order.Neighborhood </span></li>
+                                <li>District <i>-</i> <span>@order.District </span></li>
+                                <li>City <i>-</i> <span>@order.City</span></li>
+                                <li>Total <i>-</i> <span>@order.Total<i class="fas fa-euro-sign" style="font-size: 18px;"></i></span></li>}
+
+
+
+
+                        </ul>
+                    </div>
+                    <div class="checkout-right-basket" style="margin-top: 200px;">
+                        <a asp-controller="Supplement" asp-action="Index"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Continue Shopping</a>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+        </div>
+
+
+    }
+
+
+</div>

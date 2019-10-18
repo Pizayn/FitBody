@@ -1,0 +1,11 @@
+﻿@model FitBody.WebUI.Model.BlogViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<div class="container">
+   <news-details-pager current-details="@Model.BlogPost.Description"></news-details-pager>
+
+</div>

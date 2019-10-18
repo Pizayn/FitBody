@@ -1,0 +1,17 @@
+﻿@model FitBody.WebUI.Model.ExerciseTypeAddViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form asp-controller="Admin" asp-action="ExerciseTypeAdd">
+    <div class="container">
+        <div class="form-group">
+            <label asp-for="ExerciseType.ExerciseTypeName">Exercise Type Name</label>
+            <input asp-for="ExerciseType.ExerciseTypeName" class="form-control" placeholder="Exercise Type Name"/>
+            <span asp-validation-for="ExerciseType.ExerciseTypeName"></span>
+        </div>
+    </div>
+    <input type="submit" value="Add Exercise Type" class="btn-success"/>
+</form>

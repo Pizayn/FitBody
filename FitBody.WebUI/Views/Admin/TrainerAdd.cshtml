@@ -1,0 +1,29 @@
+﻿@model FitBody.WebUI.Model.AddViewModel.TrainerAddViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form asp-controller="Admin" asp-action="TrainerAdd" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="Trainer.TrainerName">Trainer Name</label>
+        <input asp-for="Trainer.TrainerName" class="form-control" placeholder="Trainer Name" />
+        <span asp-validation-for="Trainer.TrainerName"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Trainer.TrainerSurname">Trainer Surname</label>
+        <input asp-for="Trainer.TrainerSurname" class="form-control" placeholder="Trainer Surname" />
+        <span asp-validation-for="Trainer.TrainerSurname"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Trainer.Description">Description</label>
+        <input asp-for="Trainer.Description" class="form-control" placeholder="Trainer Description" />
+        <span asp-validation-for="Trainer.Description"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Trainer.Image"></label>
+        <input type="file" name="formFile" />
+    </div>
+    <input type="submit" class="btn btn-success" value="Add Trainer" />
+</form>

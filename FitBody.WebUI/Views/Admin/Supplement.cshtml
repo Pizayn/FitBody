@@ -1,0 +1,79 @@
+﻿@model FitBody.WebUI.Model.AdminSupplementViewModel
+@using Syncfusion.EJ2
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#myTable').DataTable();
+    });
+
+</script>
+
+
+
+
+
+<!-- sidebar element declaration -->
+<!-- end of sidebar element -->
+<!-- main content declaration -->
+
+<div id="main-content container-fluid col-md-12 " style="margin-left: 75px;">
+    <div class="container" style="margin-top: 100px;">
+        <div style="width: 90%; margin: 0 auto;">
+            <table class="cell-border" style="width: 100%" id="myTable">
+                <thead>
+                    <tr>
+                        <th>SupplementName</th>
+                        <th>Image</th>
+                        <th>Price</th>
+                        <th>UnitInStock</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var supplement in Model.Supplements)
+                    {
+                        var base64 = Convert.ToBase64String(supplement.Image);
+                        var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+
+                        <tr>
+                            <td>@supplement.SupplementName</td>
+                            <td>
+                                <img src="@imgsrc" width="50px;" height="50px;" />
+                            </td>
+                            <td>@supplement.Price</td>
+                            <td>@supplement.UnitInStock</td>
+                            <td>
+                                <a asp-action="SupplementEdit" asp-controller="Admin" asp-route-supplementId="@supplement.ID" class="btn btn-success">Edit</a>
+                                <a asp-action="SupplementDelete" asp-controller="Admin" asp-route-supplement="@supplement.ID" class="btn btn-danger">Delete</a>
+                            </td>
+
+
+
+                        </tr>
+                    }
+
+
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+

@@ -1,0 +1,138 @@
+﻿@model FitBody.WebUI.Model.HomeViewModel
+@using Syncfusion.EJ2
+
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/_Layout.cshtml";
+
+}
+
+
+    <!-- <div style="height: 113px;"></div> -->
+    <div class="slide-one-item home-slider owl-carousel">
+
+        <div class="site-blocks-cover inner-page" style="background-image: url(images/hero_b1_1.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+            <!-- <div class="container"> -->
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-7 text-center" data-aos="fade">
+                    <h1>Welcome To Fitbody</h1>
+                    <span class="caption d-block text-white">Find The Healthy Way</span>
+                </div>
+            </div>
+            <!-- </div> -->
+        </div>
+        <div class="site-blocks-cover inner-page" style="background-image: url(images/hero_bg_2.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+            <!-- <div class="container"> -->
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-7 text-center" data-aos="fade">
+                    <h1>Optimize Your Health</h1>
+                    <span class="caption d-block text-white">Effective Program</span>
+                </div>
+            </div>
+            <!-- </div> -->
+        </div>
+    </div>
+    <div class="site-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="site-section-heading text-center">News</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 block-13 nav-direction-white">
+                    <div class="nonloop-block-13 owl-carousel">
+                        @foreach (var blogPost in Model.BlogPosts)
+                        {
+                            <div class="media-image">
+                                <img src=@blogPost.Image alt="Image" class="img-fluid" style="width: 356px; height: 267px;">
+                                <div class="media-image-body">
+                                    <h2>@blogPost.Title</h2>
+                                    <p>@blogPost.Summary.Substring(0,50)...</p>
+                                    <span class="mb-3 d-block post-date" style="color: orangered;">@blogPost.Time.ToString("MM/dd/yyyy")</span>
+
+                                    <p><a asp-controller="News" asp-action="Details" asp-route-id="@blogPost.ID" class="btn btn-primary text-white px-4"><span class="caption">Learn More</span></a></p>
+                                </div>
+                            </div>
+                        }
+                                                                                     
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="site-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <p class="mb-5"><img src="images/img_1.jpg" alt="Image" class="img-fluid"></p>
+                </div>
+                <div class="col-lg-5 ml-auto">
+                    <h2 class="site-section-heading mb-3">The Club</h2>
+                    <p>Our team is heavily involved in our community and closely connected with local public services, outreach programs, and other local businesses. Our culture isn’t that of these corporate gyms. When you walk in the door you’re here to work, sweat, and burn. At THE GYM, great shape is an authentic passion, and we don’t back down from the challenge to push our bodies to levels constantly challenging our limits.
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="site-section bg-image" style="background-image: url('images/bg_2.jpg'); background-attachment: fixed">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md-12">
+                    <h2 class="site-section-heading text-center text-white">Featured Trainer</h2>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                @foreach (var trainer in Model.Trainers.Take(1))
+                {
+                    var base64 = Convert.ToBase64String(trainer.Image);
+                    var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+                    <div class="col-md-7 text-center">
+                        <img src=@imgsrc alt="Image" class="img-fluid rounded-circle w-25 mb-4">
+                        <h2 class="h5 mb-4 text-white">@trainer.TrainerName @trainer.TrainerSurname</h2>
+                        <p class="text-white mb-5 lead">&ldquo;@trainer.Description&rdquo;</p>
+                    </div>
+                }
+                
+            </div>
+        </div>
+    </div>
+
+@await Component.InvokeAsync("ExerciseVİewComponentModel")
+<div class="site-section block-14 bg-light nav-direction-white">
+        <div class="container">
+
+            <div class="row mb-5">
+                <div class="col-md-12">
+                    <h2 class="site-section-heading text-center">Trainers</h2>
+                </div>
+            </div>
+            <div class="nonloop-block-14 owl-carousel">
+                @foreach (var trainer in Model.Trainers)
+                {
+                    var base64 = Convert.ToBase64String(trainer.Image);
+                    var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+                    <div class="p-5">
+                        <div class="d-flex block-testimony">
+                            <div class="person mr-3">
+                                <img src=@imgsrc alt="Image" class="img-fluid rounded-circle">
+                            </div>
+                            <div>
+                                <h2 class="h5">@trainer.TrainerName @trainer.TrainerSurname</h2>
+                                <blockquote>&ldquo;@trainer.Description !&rdquo;</blockquote>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                
+              
+               
+              
+            </div>
+        </div>
+        
+
+    </div>

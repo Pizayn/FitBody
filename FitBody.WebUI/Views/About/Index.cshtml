@@ -1,0 +1,49 @@
+﻿@model FitBody.WebUI.Model.AboutViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<div class="site-blocks-cover inner-page" style="background-image: url(images/hero_b1_1.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+    <div class="row align-items-center justify-content-center">
+        <div class="col-md-7 text-center" data-aos="fade">
+            <h1>About Crossfits</h1>
+            <span class="caption d-block text-white">Find The Healthy Way</span>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="site-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <p class="mb-5"><img src="images/img_1.jpg" alt="Image" class="img-fluid"></p>
+            </div>
+            <div class="col-lg-5 ml-auto">
+                <h2 class="site-section-heading mb-3">The Club</h2>
+                <p>@Model.About.Description</p>
+                <p class="mb-4"></p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="site-section bg-image" style="background-image: url('images/bg_2.jpg'); background-attachment: fixed;">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-md-12">
+                <h2 class="site-section-heading text-center text-white">Our Team</h2>
+            </div>
+        </div>
+        @await Component.InvokeAsync("Trainer")
+
+    </div>
+</div>
+
+@await Component.InvokeAsync("ExerciseVİewComponentModel")
+

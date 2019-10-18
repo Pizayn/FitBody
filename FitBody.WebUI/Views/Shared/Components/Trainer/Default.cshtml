@@ -1,0 +1,20 @@
+﻿@model FitBody.WebUI.Model.TrainerListViewModel
+
+
+
+    <div class="row">
+        @foreach (var trainer in  Model.Trainers)
+        {
+            var base64 = Convert.ToBase64String(trainer.Image);
+            var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+            <div class="col-md-6 text-center mb-5">
+                <div class="p-3">
+                    <img src="@imgsrc" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
+                    <h2 class="h5 mb-4 text-white">@trainer.TrainerName @trainer.TrainerSurname</h2>
+                    <p class="text-white mb-5 lead">&ldquo;@trainer.Description</p>
+                        
+                </div>
+            </div>
+        }
+                                                                                     
+    </div>

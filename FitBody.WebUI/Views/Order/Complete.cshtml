@@ -1,0 +1,41 @@
+﻿@model FitBody.WebUI.Model.ShippingDetailViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_SupplementLayout.cshtml";
+}
+@await Component.InvokeAsync("SideBar")
+<div class="container" style="margin-left: 250px; margin-top: 100px;">
+    <form asp-controller="Order" asp-action="Complete" method="post">
+        <div class="form-group">
+            <label asp-for="ShippingDetail.Name"></label>
+            <input asp-for="ShippingDetail.Name" class="form-control" placeholder="Name" />
+            <span asp-validation-for="ShippingDetail.Name"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ShippingDetail.Surname"></label>
+            <input asp-for="ShippingDetail.Surname" class="form-control" placeholder="Surname" />
+            <span asp-validation-for="ShippingDetail.Surname"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ShippingDetail.City"></label>
+            <input asp-for="ShippingDetail.City" class="form-control" placeholder="City" />
+            <span asp-validation-for="ShippingDetail.City"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ShippingDetail.District"></label>
+            <input asp-for="ShippingDetail.District" class="form-control" placeholder="District" />
+            <span asp-validation-for="ShippingDetail.District"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ShippingDetail.Neighborhood"></label>
+            <input asp-for="ShippingDetail.Neighborhood" class="form-control" placeholder="Neighborhood" />
+            <span asp-validation-for="ShippingDetail.Neighborhood"></span>
+        </div>
+        <input type="hidden" asp-for="ShippingDetail.ID"/>
+        <input type="hidden" asp-for="ShippingDetail.Time"/>
+
+        <input class="btn btn-success" type="submit" value="Complete" />
+    </form>
+</div>
+

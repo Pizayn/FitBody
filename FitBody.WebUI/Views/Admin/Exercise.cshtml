@@ -1,0 +1,82 @@
+﻿@model FitBody.WebUI.Model.ExerciseViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var exerciseTypeName = "";
+}
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#myTable').DataTable();
+    });
+
+</script>
+
+
+
+
+
+<!-- sidebar element declaration -->
+<!-- end of sidebar element -->
+<!-- main content declaration -->
+
+<div id="main-content container-fluid col-md-12 " style="margin-left: 75px;">
+    <div class="container" style="margin-top: 100px;">
+        <div style="width: 90%; margin: 0 auto;">
+            <table class="cell-border" style="width: 100%" id="myTable">
+                <thead>
+                    <tr>
+                        <th>Exercise Type</th>
+                        <th>Title</th>
+                        <th>Image</th>
+                        <th>Description</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var exercise in Model.Exercises)
+                    {
+                        foreach (var exerciseType in Model.ExerciseTypes)
+                         {
+                             if (exercise.ExerciseTypeID == exerciseType.ID)
+                              {
+                                  exerciseTypeName = exerciseType.ExerciseTypeName;
+                              }
+                         }
+
+
+                        <tr>
+                            <td>@exerciseTypeName</td>
+                            <td>@exercise.ExerciseName</td>
+                            <td>
+                                <img src="@exercise.Image" width="50px;" height="50px;" />
+                            </td>
+                            <td>@exercise.Summary.Substring(0, 20)</td>
+
+                            <td>
+                                <a asp-action="ExerciseEdit" asp-controller="Admin" asp-route-exerciseId="@exercise.ID" class="btn btn-success">Edit</a>
+                                <a asp-action="ExerciseDelete" asp-controller="Admin" asp-route-ID="@exercise.ID" class="btn btn-danger">Delete</a>
+                            </td>
+
+
+
+                        </tr>
+                    }
+
+
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+</div>
+
+

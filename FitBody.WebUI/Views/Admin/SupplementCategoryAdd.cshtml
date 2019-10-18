@@ -1,0 +1,17 @@
+﻿@model FitBody.WebUI.Model.SupplementCategoryAddViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form asp-controller="Admin" asp-action="SupplementCategoryAdd" method="post">
+    <div class="container">
+        <div class="form-group">
+            <label asp-for="SupplementCategory.CategoryName">Category Name</label>
+            <input asp-for="SupplementCategory.CategoryName" class="form-control" placeholder="Supplement CategoryName"/>
+            <span asp-validation-for="SupplementCategory.CategoryName"></span>
+        </div>
+        <input type="submit" class="btn-success" value="Add Supplement Category"/>
+    </div>
+</form>

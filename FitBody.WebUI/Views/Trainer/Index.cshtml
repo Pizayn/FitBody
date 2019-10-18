@@ -1,0 +1,29 @@
+﻿@model FitBody.WebUI.Model.TrainerListViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "/Views/_Layout.cshtml";
+}
+
+<div class="site-blocks-cover inner-page" style="background-image: url(images/hero_b1_1.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+    <div class="row align-items-center justify-content-center">
+        <div class="col-md-7 text-center" data-aos="fade">
+            <h1>Fitbody' Trainers</h1>
+            <span class="caption d-block text-white">Find The Healthy Way</span>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="site-section bg-image" style="background-image: url('images/bg_2.jpg'); background-attachment: fixed;">
+    <div class="container">
+        @await Component.InvokeAsync("Trainer")
+    </div>
+  
+</div>
+
+
+@await Component.InvokeAsync("ExerciseVİewComponentModel")
+

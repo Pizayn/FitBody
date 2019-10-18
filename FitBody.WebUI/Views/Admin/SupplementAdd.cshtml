@@ -1,0 +1,49 @@
+﻿@model FitBody.WebUI.Model.SupplementAddVİewModel
+
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form asp-controller="Admin" asp-action="SupplementAdd" method="post" enctype="multipart/form-data">
+    <div class="container">
+        <div class="form-group">
+            <label asp-for="Supplement.SupplementName">Supplement Name</label>
+            <input asp-for="Supplement.SupplementName" class="form-control" placeholder="Supplement Name" />
+            <span asp-validation-for="Supplement.SupplementName"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Supplement.Description">Description</label>
+            <input asp-for="Supplement.Description" placeholder="description" class="form-control"/>
+            <span asp-validation-for="Supplement.Description"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Supplement.Price">Price</label>
+            <input asp-for="Supplement.Price" class="form-control" placeholder="Price " />
+            <span asp-validation-for="Supplement.Price"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Supplement.UnitInStock">Unit In Stock</label>
+            <input asp-for="Supplement.UnitInStock" class="form-control" placeholder="UnitInStock " />
+            <span asp-validation-for="Supplement.UnitInStock"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Supplement.SupplementCategory">Supplement Category</label>
+            <select asp-for="Supplement.SupplementCategoryID" class="form-control" asp-items="@{new SelectList(Model.SupplementCategories, "ID", "CategoryName")}"></select>
+            <span asp-validation-for="Supplement.SupplementCategoryID"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Supplement.SupplementSubCategory">Supplement Sub Category</label>
+            <select asp-for="Supplement.SupplementSubCategoryID" class="form-control" asp-items="@{new SelectList(Model.SupplementSubCategories, "ID", "SuplementSubCategoryName")}"></select>
+            <span asp-validation-for="Supplement.SupplementSubCategoryID"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Supplement.Image">Image</label>
+            <input type="file" name="formFile" asp-for="Supplement.Image" />
+        </div>
+        <input type="hidden" asp-for="Supplement.Time"/>
+        <input type="submit"  value="Add Supplement" class="btn-success" />
+    </div>
+</form>
